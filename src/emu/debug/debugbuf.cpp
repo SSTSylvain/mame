@@ -211,7 +211,7 @@ void debug_disasm_buffer::debug_data_buffer::setup_methods()
 					for(offs_t lpc = lstart; lpc != lend; lpc = (lpc + 1) & m_pc_mask) {
 						offs_t tpc = m_intf->pc_linear_to_real(lpc);
 						if (m_space->device().memory().translate(m_space->spacenum(), TRANSLATE_FETCH_DEBUG, tpc))
-							*dest++ = m_space->read_word(tpc << 1);
+							*dest++ = m_space->read_word(tpc);
 						else
 							*dest++ = 0;
 					}
@@ -243,7 +243,7 @@ void debug_disasm_buffer::debug_data_buffer::setup_methods()
 					for(offs_t lpc = lstart; lpc != lend; lpc = (lpc + 1) & m_pc_mask) {
 						offs_t tpc = lpc;
 						if (m_space->device().memory().translate(m_space->spacenum(), TRANSLATE_FETCH_DEBUG, tpc))
-							*dest++ = m_space->read_qword(tpc << 3);
+							*dest++ = m_space->read_qword(tpc);
 						else
 							*dest++ = 0;
 					}
@@ -257,7 +257,7 @@ void debug_disasm_buffer::debug_data_buffer::setup_methods()
 					for(offs_t lpc = lstart; lpc != lend; lpc = (lpc + 1) & m_pc_mask) {
 						offs_t tpc = lpc;
 						if (m_space->device().memory().translate(m_space->spacenum(), TRANSLATE_FETCH_DEBUG, tpc))
-							*dest++ = m_space->read_dword(tpc << 2);
+							*dest++ = m_space->read_dword(tpc);
 						else
 							*dest++ = 0;
 					}
@@ -271,7 +271,7 @@ void debug_disasm_buffer::debug_data_buffer::setup_methods()
 					for(offs_t lpc = lstart; lpc != lend; lpc = (lpc + 1) & m_pc_mask) {
 						offs_t tpc = lpc;
 						if (m_space->device().memory().translate(m_space->spacenum(), TRANSLATE_FETCH_DEBUG, tpc))
-							*dest++ = m_space->read_word(tpc << 1);
+							*dest++ = m_space->read_word(tpc);
 						else
 							*dest++ = 0;
 					}
@@ -299,7 +299,7 @@ void debug_disasm_buffer::debug_data_buffer::setup_methods()
 					for(offs_t lpc = lstart; lpc != lend; lpc = (lpc + 0x10) & m_pc_mask) {
 						offs_t tpc = lpc;
 						if (m_space->device().memory().translate(m_space->spacenum(), TRANSLATE_FETCH_DEBUG, tpc))
-							*dest++ = m_space->read_word(tpc >> 3);
+							*dest++ = m_space->read_word(tpc);
 						else
 							*dest++ = 0;
 					}
